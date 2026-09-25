@@ -11,4 +11,4 @@ COPY --from=build /app /app
 ENV NODE_ENV=production
 ENV PORT=3000
 EXPOSE 3000
-CMD ["sh", "-c", "pnpm db:bootstrap && pnpm start"]
+CMD ["sh", "-c", "./node_modules/.bin/prisma db push && ./node_modules/.bin/tsx prisma/seed.ts && ./node_modules/.bin/next start"]
